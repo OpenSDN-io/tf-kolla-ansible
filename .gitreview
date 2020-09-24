@@ -1,5 +1,5 @@
 [gerrit]
-host=review.opendev.org
+host=review.opencontrail.org
 port=29418
-project=openstack/kolla-ansible.git
-defaultbranch=stable/xena
+project=tungstenfabric/tf-kolla-ansible.git
+defaultbranch=contrail/xena
