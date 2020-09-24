@@ -61,7 +61,13 @@
             "dest": "/var/lib/nova/.config/libvirt/auth.conf",
             "owner": "nova",
             "perm": "0600"
-        }{% endif %}
+        },{% endif %}
+        {
+            "source": "{{ container_config_directory }}/contrail-plugin.pth",
+            "dest": "/usr/lib/python{{ distro_python_version }}/site-packages/contrail-plugin.pth",
+            "owner": "root",
+            "perm": "0644"
+        }
     ],
     "permissions": [
         {

@@ -170,6 +170,8 @@
   notify:
     - Restart nova-compute container
 
+- include_tasks: config_opencontrail.yml
+
 - name: Copying over existing policy file
   become: true
   template:
