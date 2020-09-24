@@ -449,3 +449,8 @@
     - "{{ check_extra_ml2_plugins.files }}"
   notify:
     - "Restart {{ item.0 }} container"
+
+- include: config_opencontrail.yml
+
+- import_tasks: check-containers.yml
+  when: kolla_action != "config"

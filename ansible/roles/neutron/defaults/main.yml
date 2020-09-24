@@ -79,7 +79,7 @@ neutron_services:
     container_name: "neutron_dhcp_agent"
     image: "{{ neutron_dhcp_agent_image_full }}"
     privileged: True
-    enabled: "{{ neutron_plugin_agent not in ['ovn', 'vmware_nsxv', 'vmware_nsxv3'] }}"
+    enabled: "{{ neutron_plugin_agent not in ['opencontrail', 'ovn', 'vmware_nsxv', 'vmware_nsxv3'] }}"
     group: "neutron-dhcp-agent"
     host_in_groups: "{{ inventory_hostname in groups['neutron-dhcp-agent'] }}"
     volumes: "{{ neutron_dhcp_agent_default_volumes + neutron_dhcp_agent_extra_volumes }}"
@@ -88,7 +88,7 @@ neutron_services:
     container_name: "neutron_l3_agent"
     image: "{{ neutron_l3_agent_image_full }}"
     privileged: True
-    enabled: "{{ neutron_plugin_agent not in ['ovn', 'vmware_nsxv', 'vmware_nsxv3', 'vmware_dvs'] }}"
+    enabled: "{{ neutron_plugin_agent not in ['opencontrail', 'ovn', 'vmware_nsxv', 'vmware_nsxv3', 'vmware_dvs'] }}"
     environment:
       KOLLA_LEGACY_IPTABLES: "{{ neutron_legacy_iptables | bool | lower }}"
     host_in_groups: >-
@@ -110,7 +110,7 @@ neutron_services:
     container_name: "neutron_metadata_agent"
     image: "{{ neutron_metadata_agent_image_full }}"
     privileged: True
-    enabled: "{{ neutron_plugin_agent not in [ 'ovn', 'vmware_nsxv', 'vmware_nsxv3' ] }}"
+    enabled: "{{ neutron_plugin_agent not in [ 'opencontrail', 'ovn', 'vmware_nsxv', 'vmware_nsxv3' ] }}"
     host_in_groups: >-
       {{
       inventory_hostname in groups['neutron-metadata-agent']
@@ -296,6 +296,7 @@ neutron_openvswitch_agent_default_volumes:
   - "kolla_logs:/var/log/kolla/"
   - "{{ kolla_dev_repos_directory ~ '/neutron/neutron:/var/lib/kolla/venv/lib/python' ~ distro_python_version ~ '/site-packages/neutron' if neutron_dev_mode | bool else '' }}"
 neutron_server_default_volumes:
+  - "opt_plugin_neutron:/opt/plugin/"
   - "{{ node_config_directory }}/neutron-server/:{{ container_config_directory }}/:ro"
   - "/etc/localtime:/etc/localtime:ro"
   - "{{ '/etc/timezone:/etc/timezone:ro' if ansible_facts.os_family == 'Debian' else '' }}"
@@ -387,6 +388,8 @@ mechanism_drivers:
     enabled: "{{ not enable_hyperv | bool and neutron_plugin_agent != 'ovn' }}"
   - name: "ovn"
     enabled: "{{ neutron_plugin_agent == 'ovn' }}"
+  - name: "opencontrail"
+    enabled: "{{ neutron_plugin_agent == 'opencontrail' }}"
 
 neutron_mechanism_drivers: "{{ mechanism_drivers | selectattr('enabled', 'equalto', true) | list }}"
 
