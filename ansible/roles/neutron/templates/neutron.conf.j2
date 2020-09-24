@@ -15,7 +15,11 @@ bind_host = {{ api_interface_address }}
 
 bind_port = {{ neutron_server_listen_port }}
 
+{% if enable_opencontrail_rbac | bool %}
+api_paste_config = /etc/neutron/api-paste.ini
+{% else %}
 api_paste_config = /usr/share/neutron/api-paste.ini
+{% endif %}
 
 api_workers = {{ openstack_service_workers }}
 metadata_workers = {{ openstack_service_workers }}
@@ -31,6 +35,8 @@ metadata_proxy_socket = /var/lib/neutron/kolla/metadata_proxy
 interface_driver = openvswitch
 {% elif neutron_plugin_agent == "linuxbridge" %}
 interface_driver = linuxbridge
+{% elif neutron_plugin_agent == 'opencontrail' %}
+interface_driver =
 {% endif %}
 
 {% if enable_nova_fake | bool %}
@@ -47,6 +53,12 @@ core_plugin = vmware_nsx.plugin.NsxV3Plugin
 dhcp_agent_notification = False
 {% elif neutron_plugin_agent == 'vmware_dvs' %}
 core_plugin = vmware_nsx.plugin.NsxDvsPlugin
+{% elif neutron_plugin_agent == 'opencontrail' %}
+core_plugin = neutron_plugin_contrail.plugins.opencontrail.contrail_plugin.NeutronPluginContrailCoreV2
+service_plugins = {% if enable_neutron_fwaas | bool %}firewall_v2,{% endif %}{% if enable_opencontrail_trunk | bool %}contrail-trunk,{% endif %}{% if enable_opencontrail_tags | bool %}contrail-tags,{% endif %}
+
+api_extensions_path = /opt/plugin/site-packages/neutron_plugin_contrail/extensions
+
 {% else %}
 core_plugin = ml2
 service_plugins = {{ neutron_service_plugins|map(attribute='name')|join(',') }}
@@ -184,6 +196,14 @@ enabled = true
 trace_sqlalchemy = true
 hmac_keys = {{ osprofiler_secret }}
 connection_string = {{ osprofiler_backend_connection_string }}
+{% endif %}
+
+{% if neutron_plugin_agent == 'opencontrail' %}
+[quotas]
+quota_network=-1
+quota_subnet=-1
+quota_port=-1
+quota_driver=neutron_plugin_contrail.plugins.opencontrail.quota.driver.QuotaDriver
 {% endif %}
 
 [placement]
