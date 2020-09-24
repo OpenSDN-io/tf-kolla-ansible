@@ -73,6 +73,12 @@
             "dest": "/etc/nova/vendordata.json",
             "owner": "nova",
             "perm": "0600"
+        }{% endif %}{% if neutron_plugin_agent in ['opencontrail'] -%},
+        {
+            "source": "{{ container_config_directory }}/contrail-plugin.pth",
+            "dest": "/usr/lib/python{{ distro_python_version }}/site-packages/contrail-plugin.pth",
+            "owner": "root",
+            "perm": "0644"
         }{% endif %}
     ],
     "permissions": [
