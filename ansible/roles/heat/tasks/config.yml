@@ -84,3 +84,6 @@
     mode: "0660"
   become: true
   when: service | service_enabled_and_mapped_to_host
+
+- include: config_opencontrail.yml
+

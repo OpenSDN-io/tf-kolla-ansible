@@ -168,6 +168,7 @@ heat_api_cfn_default_volumes:
   - "kolla_logs:/var/log/kolla/"
   - "{{ '/dev/shm:/dev/shm' }}"
 heat_engine_default_volumes:
+  - "opt_plugin_heat:/opt/plugin/"
   - "{{ node_config_directory }}/heat-engine/:{{ container_config_directory }}/:ro"
   - "/etc/localtime:/etc/localtime:ro"
   - "{{ '/etc/timezone:/etc/timezone:ro' if ansible_facts.os_family == 'Debian' else '' }}"
