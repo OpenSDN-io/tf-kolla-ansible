@@ -109,3 +109,9 @@
     - service.enabled | bool
   notify:
     - Restart heat-api-cfn container
+
+- include: config_opencontrail.yml
+
+- import_tasks: check-containers.yml
+  when: kolla_action != "config"
+
