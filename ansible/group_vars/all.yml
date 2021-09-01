@@ -13,10 +13,12 @@ enable_opencontrail_tags: no
 # When enable_neutron_opencontrail is set to "yes", then these two variables are
 # required. By default these are being set to known working container images.
 # These should be overridden in globals.yml
-neutron_opencontrail_init_image_full: "opencontrailnightly/contrail-openstack-neutron-init:queens-master-131"
-nova_compute_opencontrail_init_image_full: "opencontrailnightly/contrail-openstack-compute-init:queens-master-131"
-ironic_notification_manager_image_full: "opencontrailnightly/contrail-openstack-ironic-notification-manager:queens-master-131"
-heat_opencontrail_init_image_full: "opencontrailnightly/contrail-openstack-heat-init:queens-master-131"
+tf_namespace: "tungstenfabric"
+tf_tag: "latest"
+heat_opencontrail_init_image_full:         "{{ docker_registry ~ '/' if docker_registry else '' }}{{ tf_namespace ~ '/' if tf_namespace else '' }}contrail-openstack-heat-init:{{ tf_tag }}"
+neutron_opencontrail_init_image_full:      "{{ docker_registry ~ '/' if docker_registry else '' }}{{ tf_namespace ~ '/' if tf_namespace else '' }}contrail-openstack-neutron-init:{{ tf_tag }}"
+neutron_opencontrail_ml2_init_image_full:  "{{ docker_registry ~ '/' if docker_registry else '' }}{{ tf_namespace ~ '/' if tf_namespace else '' }}contrail-openstack-neutron-ml2-init:{{ tf_tag }}"
+nova_compute_opencontrail_init_image_full: "{{ docker_registry ~ '/' if docker_registry else '' }}{{ tf_namespace ~ '/' if tf_namespace else '' }}contrail-openstack-compute-init:{{ tf_tag }}"
 
 # contrail_additions : Ideally leave this to yes if you want the opencontrail
 # heat plugin. "no" means pure openstack heat - without contrail heat plugin
@@ -25,7 +27,7 @@ enable_heat_opencontrail: "yes"
 # contrail_additions: When enable_ironic is set to "yes", the ironic notification
 # manager service container is deployed. By default this will be set to known
 # upstream working containers. These should be overridden in globals.yml
-# ironic_notification_manager_image_full: "opencontrailnightly/contrail-openstack-ironic-notification-manager:queens-master-131"
+ironic_notification_manager_image_full:    "{{ docker_registry ~ '/' if docker_registry else '' }}{{ tf_namespace ~ '/' if tf_namespace else '' }}contrail-openstack-ironic-notification-manager:{{ tf_tag }}"
 ironic_notification_manager_log_file: "/var/log/ironic/ironic-notification-manager.log"
 ironic_notification_manager_log_level: "SYS_INFO"
 ironic_notification_manager_introspect_port: "8110"
