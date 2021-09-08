@@ -48,7 +48,7 @@ dhcp_agent_notification = False
 core_plugin = vmware_nsx.plugin.NsxDvsPlugin
 {% elif neutron_plugin_agent == 'opencontrail' %}
 core_plugin = neutron_plugin_contrail.plugins.opencontrail.contrail_plugin.NeutronPluginContrailCoreV2
-service_plugins = {% if enable_neutron_fwaas | bool %}firewall_v2,{% endif %}{% if enable_opencontrail_trunk | bool %}contrail-trunk,{% endif %}{% if enable_opencontrail_tags | bool %}contrail-tags,{% endif %}
+service_plugins = {% if enable_opencontrail_trunk | bool %}contrail-trunk,{% endif %}{% if enable_opencontrail_tags | bool %}contrail-tags,{% endif %}
 
 api_extensions_path = /opt/plugin/site-packages/neutron_plugin_contrail/extensions
 
