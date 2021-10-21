@@ -59,8 +59,8 @@
             "perm": "0600"
         },
         {
-            "source": "{{ container_config_directory }}/api-paste.ini",
-            "dest": "/etc/neutron/api-paste.ini",
+            "source": "{{ container_config_directory }}/api-paste-rbac.ini",
+            "dest": "/etc/neutron/api-paste-rbac.ini",
             "owner": "neutron",
             "perm": "0600"
         }{% if enable_haproxy|bool and kolla_enable_tls_external|bool %},
