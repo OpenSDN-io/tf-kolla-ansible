@@ -38,17 +38,17 @@
   notify:
     - "Restart {{ service_name }} container"
 
-- name: Copying over api-paste.ini
+- name: Copying over api-paste-rbac.ini
   become: true
   vars:
     service_name: "neutron-server"
     neutron_server: "{{ neutron_services[service_name] }}"
   merge_configs:
     sources:
-      - "{{ role_path }}/templates/api-paste.ini.j2"
-      - "{{ node_custom_config }}/neutron/api-paste.ini"
-      - "{{ node_custom_config }}/neutron/{{ inventory_hostname }}/api-paste.ini"
-    dest: "{{ node_config_directory }}/{{ service_name }}/api-paste.ini"
+      - "{{ role_path }}/templates/api-paste-rbac.ini.j2"
+      - "{{ node_custom_config }}/neutron/api-paste-rbac.ini"
+      - "{{ node_custom_config }}/neutron/{{ inventory_hostname }}/api-paste-rbac.ini"
+    dest: "{{ node_config_directory }}/{{ service_name }}/api-paste-rbac.ini"
     mode: "0660"
   register: api_paste_ini
   when:
