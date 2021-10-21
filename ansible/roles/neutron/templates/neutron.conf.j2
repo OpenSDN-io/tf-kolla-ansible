@@ -15,7 +15,11 @@ bind_host = {{ api_interface_address }}
 
 bind_port = {{ neutron_server_listen_port }}
 
+{% if enable_opencontrail_rbac | bool %}
+api_paste_config = /etc/neutron/api-paste-rbac.ini
+{% else %}
 api_paste_config = /etc/neutron/api-paste.ini
+{% endif %}
 
 api_workers = {{ neutron_api_workers }}
 rpc_workers = {{ openstack_service_rpc_workers }}
