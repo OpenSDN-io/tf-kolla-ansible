@@ -54,7 +54,7 @@ nova_cell_services:
     image: "{{ nova_compute_image_full }}"
     environment:
       LIBGUESTFS_BACKEND: "direct"
-      PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/plugin/bin" # contrail / tungstenfabric needs this FIXME
+      PATH: "/var/lib/kolla/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/plugin/bin" # contrail / tungstenfabric needs this FIXME
     privileged: True
     enabled: "{{ not enable_nova_fake | bool }}"
     ipc_mode: "host"
