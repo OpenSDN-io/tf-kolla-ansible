@@ -22,7 +22,7 @@ analytics_api_port = {{ opencontrail_collector_port }}
 [keystone_authtoken]
 auth_host = {{ keystone_internal_fqdn }}
 auth_port = {{ keystone_internal_port }}
-auth_protocol = {{ admin_protocol }}
+auth_protocol = {{ internal_protocol }}
 admin_user = {{ neutron_keystone_user }}
 admin_password = {{ neutron_keystone_password }}
 admin_tenant_name = service
