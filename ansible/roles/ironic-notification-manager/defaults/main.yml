@@ -35,7 +35,7 @@ auth_env:
   KEYSTONE_AUTH_PROJECT_DOMAIN_NAME: "{{ default_project_domain_name }}"
   KEYSTONE_AUTH_URL_VERSION: "/v3"
   KEYSTONE_AUTH_HOST: "{{ kolla_internal_fqdn }}"
-  KEYSTONE_AUTH_PROTO: "{{ admin_protocol }}"
+  KEYSTONE_AUTH_PROTO: "{{ internal_protocol }}"
   KEYSTONE_AUTH_ADMIN_PORT: "{{ keystone_internal_port }}"
   KEYSTONE_AUTH_PUBLIC_PORT: "{{ keystone_public_port }}"
   KEYSTONE_AUTH_REGION_NAME: "{{ openstack_region_name }}"
