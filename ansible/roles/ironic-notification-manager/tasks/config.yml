@@ -10,7 +10,7 @@
     - "/etc/contrail"
 
 - name: Check ironic-notification-manager container
-  kolla_docker:
+  kolla_container:
     action: "compare_container"
     common_options: "{{ docker_common_options }}"
     name: "ironic_notification_manager"

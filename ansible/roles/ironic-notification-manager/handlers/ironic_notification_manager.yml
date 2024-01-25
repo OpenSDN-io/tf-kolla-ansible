@@ -1,6 +1,6 @@
 ---
 - name: Restart ironic-notification-manager container
-  kolla_docker:
+  kolla_container:
     action: "recreate_or_restart_container"
     common_options: "{{ docker_common_options }}"
     name: "ironic_notification_manager"
