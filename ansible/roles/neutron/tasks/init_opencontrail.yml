@@ -2,7 +2,7 @@
 - name: Running opencontrail init contrail for neutron server
   vars:
     neutron_server: "{{ neutron_services['neutron-server'] }}"
-  kolla_docker:
+  kolla_container:
     action: "start_container"
     common_options: "{{ docker_common_options }}"
     detach: False

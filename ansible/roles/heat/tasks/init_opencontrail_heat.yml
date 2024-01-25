@@ -2,7 +2,7 @@
 - name: Running opencontrail init contrail for heat engine
   vars:
     heat_engine_svc: "{{ heat_services['heat-engine'] }}"
-  kolla_docker:
+  kolla_container:
     action: "start_container"
     common_options: "{{ docker_common_options }}"
     detach: False

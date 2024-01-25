@@ -1,6 +1,6 @@
 ---
 - name: Pulling ironic-notification-manager image
-  kolla_docker:
+  kolla_container:
     action: "pull_image"
     common_options: "{{ docker_common_options }}"
     image: "{{ ironic_notification_manager_image_full }}"
