@@ -1,6 +1,7 @@
 ---
 
 - name: Running Nova opencontrail bootstrap container
+  become: true
   vars:
     nova_compute: "{{ nova_cell_services['nova-compute'] }}"
   kolla_docker:

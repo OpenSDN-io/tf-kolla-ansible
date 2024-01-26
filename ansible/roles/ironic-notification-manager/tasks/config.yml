@@ -1,5 +1,6 @@
 ---
 - name: Ensuring config directories exist
+  become: true
   file:
     path: "{{ item }}"
     state: "directory"
@@ -10,6 +11,7 @@
     - "/etc/contrail"
 
 - name: Check ironic-notification-manager container
+  become: true
   kolla_docker:
     action: "compare_container"
     common_options: "{{ docker_common_options }}"
