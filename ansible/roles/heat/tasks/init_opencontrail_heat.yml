@@ -1,5 +1,6 @@
 ---
 - name: Running opencontrail init contrail for heat engine
+  become: true
   vars:
     heat_engine_svc: "{{ heat_services['heat-engine'] }}"
   kolla_docker:
