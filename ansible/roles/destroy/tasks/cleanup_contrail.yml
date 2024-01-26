@@ -1,6 +1,6 @@
 ---
 - name: Remove all contrail openstack containers
-  docker_container:
+  kolla_container:
     state: "absent"
     name: "{{ item }}"
   with_items:
