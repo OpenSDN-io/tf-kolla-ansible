@@ -1,5 +1,6 @@
 ---
 - name: Running opencontrail init contrail for neutron server
+  become: true
   vars:
     neutron_server: "{{ neutron_services['neutron-server'] }}"
   kolla_docker:
