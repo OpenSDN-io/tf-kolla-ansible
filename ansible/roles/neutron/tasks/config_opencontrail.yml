@@ -64,7 +64,7 @@
     service_name: "neutron-server"
     neutron_server: "{{ neutron_services[service_name] }}"
   copy:
-    src: "{{ kolla_external_fqdn_cacert }}"
+    src: "{{ node_config }}/certificates/haproxy-ca.crt"
     dest: "{{ node_config_directory }}/{{ service_name }}/{{ item }}"
     mode: "0660"
   become: true
