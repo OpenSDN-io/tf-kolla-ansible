@@ -69,6 +69,8 @@ opencontrail_webui_port: "8143"
 # These option controls the "insecure" option under the 
 # [APISERVER] section of ContrailPlugin.ini
 opencontrail_api_insecure: "no"
+opencontrail_api_use_vip: "no"
+
 ####################### CONTRAIL ADDITIONS - END ###########################
 
 # The "temp" files that are created before merge need to stay persistent due
