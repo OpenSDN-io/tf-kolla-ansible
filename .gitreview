@@ -1,5 +1,6 @@
 [gerrit]
-host=review.opendev.org
+host=gerrit.opensdn.io
 port=29418
-project=openstack/kolla-ansible.git
-defaultbranch=stable/2023.2
+project=opensdn-io/tf-kolla-ansible.git
+defaultbranch=opensdn/2023.2
+
