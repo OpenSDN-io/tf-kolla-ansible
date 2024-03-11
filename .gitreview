@@ -1,5 +1,5 @@
 [gerrit]
-host=review.opencontrail.org
+host=gerrit.opensdn.io
 port=29418
-project=tungstenfabric/tf-kolla-ansible.git
-defaultbranch=contrail/wallaby
+project=opensdn-io/tf-kolla-ansible.git
+defaultbranch=opensdn/wallaby
