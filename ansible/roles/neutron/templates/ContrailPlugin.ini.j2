@@ -21,7 +21,7 @@ analytics_api_port = {{ opencontrail_collector_port }}
 
 [keystone_authtoken]
 auth_host = {{ keystone_internal_fqdn }}
-auth_port = {{ keystone_internal_port }}
+auth_port = {{ keystone_public_port }}
 auth_protocol = {{ internal_protocol }}
 admin_user = {{ neutron_keystone_user }}
 admin_password = {{ neutron_keystone_password }}
