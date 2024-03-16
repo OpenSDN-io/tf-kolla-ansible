@@ -67,7 +67,6 @@
     src: "{{ node_config }}/certificates/haproxy-ca.crt"
     dest: "{{ node_config_directory }}/{{ service_name }}/{{ item }}"
     mode: "0660"
-  become: true
   register: haproxy_pem
   when:
     - kolla_enable_tls_external | bool
