@@ -14,7 +14,7 @@ enable_opencontrail_tags: no
 # required. By default these are being set to known working container images.
 # These should be overridden in globals.yml
 tf_docker_registry: "{{ docker_registry }}"
-tf_namespace: "tungstenfabric"
+tf_namespace: "opensdn"
 tf_tag: "latest"
 heat_opencontrail_init_image_full:         "{{ tf_docker_registry ~ '/' if tf_docker_registry else '' }}{{ tf_namespace ~ '/' if tf_namespace else '' }}contrail-openstack-heat-init:{{ tf_tag }}"
 neutron_opencontrail_init_image_full:      "{{ tf_docker_registry ~ '/' if tf_docker_registry else '' }}{{ tf_namespace ~ '/' if tf_namespace else '' }}contrail-openstack-neutron-init:{{ tf_tag }}"
