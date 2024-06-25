@@ -23,7 +23,7 @@
     command: >
       docker exec kolla_toolbox openstack
       --os-interface internal
-      --os-auth-url {{ keystone_admin_url }}
+      --os-auth-url {{ keystone_internal_url }}
       --os-identity-api-version 3
       --os-project-domain-name default
       --os-tenant-name admin
@@ -42,7 +42,7 @@
     command: >
       docker exec kolla_toolbox openstack
       --os-interface internal
-      --os-auth-url {{ keystone_admin_url }}
+      --os-auth-url {{ keystone_internal_url }}
       --os-identity-api-version 3
       --os-project-domain-name default
       --os-tenant-name admin
@@ -63,7 +63,7 @@
     command: >
       docker exec kolla_toolbox openstack
       --os-interface internal
-      --os-auth-url {{ keystone_admin_url }}
+      --os-auth-url {{ keystone_internal_url }}
       --os-identity-api-version 3
       --os-project-domain-name default
       --os-tenant-name admin
@@ -83,7 +83,7 @@
     command: >
       docker exec kolla_toolbox openstack
       --os-interface internal
-      --os-auth-url {{ keystone_admin_url }}
+      --os-auth-url {{ keystone_internal_url }}
       --os-identity-api-version 3
       --os-project-domain-name default
       --os-tenant-name admin
