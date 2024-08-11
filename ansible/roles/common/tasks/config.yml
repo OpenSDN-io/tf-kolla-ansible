@@ -50,7 +50,7 @@
 
 - name: Set fluentd facts
   set_fact:
-    fluentd_binary: "{{ fluentd_labels.images.0.ContainerConfig.Labels.fluentd_binary }}"
+    fluentd_binary: "{{ fluentd_labels.images.0.Config.Labels.fluentd_binary }}"
   when:
     - fluentd_binary is not defined
     - common_services.fluentd | service_enabled_and_mapped_to_host
@@ -112,7 +112,7 @@
       {{ ( enable_elasticsearch | bool or
            ( elasticsearch_address != kolla_internal_fqdn )) and
          ( not enable_monasca | bool or not monasca_ingest_control_plane_logs | bool ) }}
-    fluentd_version: "{{ fluentd_labels.images.0.ContainerConfig.Labels.fluentd_version | default('0.12') }}"
+    fluentd_version: "{{ fluentd_labels.images.0.Config.Labels.fluentd_version | default('0.12') }}"
     # Inputs
     fluentd_input_files: "{{ default_input_files | customise_fluentd(customised_input_files) }}"
     default_input_files:
