@@ -13,7 +13,7 @@
     environment:
       OPENSTACK_VERSION: "{{ openstack_release }}"
     name: "bootstrap_heat_opencontrail_plugin"
-    restart_policy: no
+    restart_policy: oneshot
     volumes: "{{ heat_engine_svc.volumes|reject('equalto', '')|list }}"
   when:
     - neutron_plugin_agent == 'opencontrail'
