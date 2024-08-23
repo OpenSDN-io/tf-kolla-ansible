@@ -70,7 +70,7 @@
       --os-username admin
       --os-password {{ keystone_admin_password }}
       --os-user-domain-name default
-      aggregate add host virtual-hosts {{ hostvars[item].ansible_hostname }}
+      aggregate add host virtual-hosts {{ hostvars[item].ansible_nodename }}
     when:
       - hostvars[item].TSN_EVPN_MODE is not defined or not hostvars[item]['TSN_EVPN_MODE'] | bool
       - enable_nova | bool
