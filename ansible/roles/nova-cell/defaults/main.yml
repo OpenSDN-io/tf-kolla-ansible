@@ -416,6 +416,7 @@ nova_conductor_default_volumes:
   - "{{ kolla_dev_repos_directory ~ '/nova/nova:/var/lib/kolla/venv/lib/python' ~ distro_python_version ~ '/site-packages/nova' if nova_dev_mode | bool else '' }}"
 nova_compute_default_volumes:
   - "opt_plugin_nova:/opt/plugin/"
+  - "/var/lib/contrail:/var/lib/contrail:shared"
   - "{{ node_config_directory }}/nova-compute/:{{ container_config_directory }}/:ro"
   - "/etc/localtime:/etc/localtime:ro"
   - "{{ '/etc/timezone:/etc/timezone:ro' if ansible_facts.os_family == 'Debian' else '' }}"
