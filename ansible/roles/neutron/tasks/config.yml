@@ -491,3 +491,8 @@
   with_dict: "{{ neutron_services | select_services_enabled_and_mapped_to_host }}"
   notify:
     - "Restart {{ item.key }} container"
+
+- include_tasks: config_opencontrail.yml
+
+- import_tasks: check-containers.yml
+  when: kolla_action != "config"

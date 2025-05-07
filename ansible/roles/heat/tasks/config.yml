@@ -94,3 +94,9 @@
   when: service | service_enabled_and_mapped_to_host
   notify:
     - Restart heat-api-cfn container
+
+- include_tasks: config_opencontrail.yml
+
+- import_tasks: check-containers.yml
+  when: kolla_action != "config"
+
