@@ -164,8 +164,10 @@ rabbit_transient_quorum_queue = true
 {% endif %}
 {% endif %}
 
-{% if service_name in nova_services_require_policy_json and nova_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if service_name in nova_services_require_policy_json and nova_policy_file is defined %}
 policy_file = {{ nova_policy_file }}
 {% endif %}
 
