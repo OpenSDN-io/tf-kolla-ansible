@@ -87,8 +87,10 @@ service_image_name = manila-service-image
 share_backend_name = GENERIC
 {% endif %}
 
-{% if manila_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if manila_policy_file is defined %}
 policy_file = {{ manila_policy_file }}
 {% endif %}
 

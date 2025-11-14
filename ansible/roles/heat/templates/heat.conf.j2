@@ -97,8 +97,10 @@ rabbit_transient_quorum_queue = true
 {% endif %}
 {% endif %}
 
-{% if heat_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if heat_policy_file is defined %}
 policy_file = {{ heat_policy_file }}
 {% endif %}
 
