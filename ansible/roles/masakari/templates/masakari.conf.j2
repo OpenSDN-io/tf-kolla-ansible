@@ -79,8 +79,10 @@ rabbit_transient_quorum_queue = true
 [oslo_middleware]
 enable_proxy_headers_parsing = True
 
-{% if masakari_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if masakari_policy_file is defined %}
 policy_file = {{ masakari_policy_file }}
 {% endif %}
 

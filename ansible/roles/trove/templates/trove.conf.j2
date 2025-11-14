@@ -105,8 +105,10 @@ hmac_keys = {{ osprofiler_secret }}
 connection_string = {{ osprofiler_backend_connection_string }}
 {% endif %}
 
-{% if trove_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if trove_policy_file is defined %}
 policy_file = {{ trove_policy_file }}
 {% endif %}
 

@@ -61,8 +61,10 @@ rabbit_transient_quorum_queue = true
 {% endif %}
 {% endif %}
 
-{% if ironic_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if ironic_policy_file is defined %}
 policy_file = {{ ironic_policy_file }}
 {% endif %}
 
