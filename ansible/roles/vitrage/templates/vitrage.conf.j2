@@ -88,8 +88,10 @@ lock_path = /var/lib/vitrage/tmp
 [oslo_middleware]
 enable_proxy_headers_parsing = True
 
-{% if vitrage_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if vitrage_policy_file is defined %}
 policy_file = {{ vitrage_policy_file }}
 {% endif %}
 

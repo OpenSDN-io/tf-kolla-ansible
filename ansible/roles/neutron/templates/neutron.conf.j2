@@ -158,8 +158,10 @@ amqp_durable_queues = true
 rabbit_quorum_queue = true
 {% endif %}
 
-{% if neutron_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if neutron_policy_file is defined %}
 policy_file = {{ neutron_policy_file }}
 {% endif %}
 

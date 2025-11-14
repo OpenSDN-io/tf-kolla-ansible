@@ -135,11 +135,11 @@ rabbit_quorum_queue = true
 {% endif %}
 
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
 {% if glance_policy_file is defined %}
 policy_file = {{ glance_policy_file }}
 {% endif %}
-enforce_new_defaults = False
-enforce_scope = False
 
 {% if enable_osprofiler | bool %}
 [profiler]

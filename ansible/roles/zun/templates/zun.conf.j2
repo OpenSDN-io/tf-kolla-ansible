@@ -103,8 +103,10 @@ connection_string = {{ osprofiler_backend_connection_string }}
 [oslo_concurrency]
 lock_path = /var/lib/zun/tmp
 
-{% if zun_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if zun_policy_file is defined %}
 policy_file = {{ zun_policy_file }}
 {% endif %}
 

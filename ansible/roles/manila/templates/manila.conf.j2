@@ -72,7 +72,9 @@ rabbit_quorum_queue = true
 [oslo_middleware]
 enable_proxy_headers_parsing = True
 
-{% if manila_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if manila_policy_file is defined %}
 policy_file = {{ manila_policy_file }}
 {% endif %}
