@@ -39,8 +39,10 @@ enable_proxy_headers_parsing = True
 [oslo_concurrency]
 lock_path = /var/lib/cloudkitty/tmp
 
-{% if cloudkitty_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if cloudkitty_policy_file is defined %}
 policy_file = {{ cloudkitty_policy_file }}
 {% endif %}
 

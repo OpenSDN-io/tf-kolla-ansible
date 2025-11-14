@@ -72,7 +72,9 @@ amqp_durable_queues = true
 rabbit_quorum_queue = true
 {% endif %}
 
-{% if watcher_policy_file is defined %}
 [oslo_policy]
+enforce_new_defaults = False
+enforce_scope = False
+{% if watcher_policy_file is defined %}
 policy_file = {{ watcher_policy_file }}
 {% endif %}
