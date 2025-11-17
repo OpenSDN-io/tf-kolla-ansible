@@ -55,10 +55,8 @@ password = {{ nova_keystone_password }}
 endpoint_type = internal
 cafile = {{ openstack_cacert }}
 
-[oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if cyborg_policy_file is defined %}
+[oslo_policy]
 policy_file = {{ cyborg_policy_file }}
 {% endif %}
 

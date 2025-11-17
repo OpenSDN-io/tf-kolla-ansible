@@ -91,10 +91,8 @@ rabbit_transient_quorum_queue = true
 {% endif %}
 {% endif %}
 
-[oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if tacker_policy_file is defined %}
+[oslo_policy]
 policy_file = {{ tacker_policy_file }}
 {% endif %}
 

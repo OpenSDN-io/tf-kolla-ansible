@@ -101,10 +101,8 @@ rabbit_transient_quorum_queue = true
 [oslo_middleware]
 enable_proxy_headers_parsing = True
 
-[oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if cinder_policy_file is defined %}
+[oslo_policy]
 policy_file = {{ cinder_policy_file }}
 {% endif %}
 

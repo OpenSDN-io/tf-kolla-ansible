@@ -95,10 +95,8 @@ rabbit_transient_quorum_queue = true
 {% endif %}
 {% endif %}
 
-[oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if mistral_policy_file is defined %}
+[oslo_policy]
 policy_file = {{ mistral_policy_file }}
 {% endif %}
 
