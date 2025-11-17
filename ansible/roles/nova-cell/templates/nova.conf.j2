@@ -216,10 +216,11 @@ rabbit_transient_quorum_queue = true
 {% endif %}
 
 [oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if service_name in nova_cell_services_require_policy_json and nova_policy_file is defined %}
 policy_file = {{ nova_policy_file }}
+{% else %}
+enforce_new_defaults = False
+enforce_scope = False
 {% endif %}
 
 [privsep_entrypoint]
