@@ -23,9 +23,7 @@ password = {{ kuryr_keystone_password }}
 username = {{ kuryr_keystone_user }}
 cafile = {{ openstack_cacert }}
 
-[oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if kuryr_policy_file is defined %}
+[oslo_policy]
 policy_file = {{ kuryr_policy_file }}
 {% endif %}

@@ -94,9 +94,7 @@ rabbit_quorum_queue = true
 [oslo_middleware]
 enable_proxy_headers_parsing = True
 
-[oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if barbican_policy_file is defined %}
+[oslo_policy]
 policy_file = {{ barbican_policy_file }}
 {% endif %}

@@ -111,10 +111,8 @@ lock_path = /var/lib/designate/tmp
 [oslo_middleware]
 enable_proxy_headers_parsing = True
 
-[oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if designate_policy_file is defined %}
+[oslo_policy]
 policy_file = {{ designate_policy_file }}
 {% endif %}
 

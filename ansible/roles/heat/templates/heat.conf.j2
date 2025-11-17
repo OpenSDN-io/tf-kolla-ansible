@@ -89,10 +89,11 @@ rabbit_quorum_queue = true
 {% endif %}
 
 [oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if heat_policy_file is defined %}
 policy_file = {{ heat_policy_file }}
+{% else %}
+enforce_new_defaults = False
+enforce_scope = False
 {% endif %}
 
 [clients]
