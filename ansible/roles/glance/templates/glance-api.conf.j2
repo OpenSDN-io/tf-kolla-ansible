@@ -116,10 +116,11 @@ rabbit_qos_prefetch_count = {{ om_rabbitmq_qos_prefetch_count }}
 rabbit_transient_quorum_queue = true
 
 [oslo_policy]
-enforce_new_defaults = False
-enforce_scope = False
 {% if glance_policy_file is defined %}
 policy_file = {{ glance_policy_file }}
+{% else %}
+enforce_new_defaults = False
+enforce_scope = False
 {% endif %}
 
 {% if enable_osprofiler | bool %}
