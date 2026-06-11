@@ -9,6 +9,12 @@
         },
         {
             "source": "{{ container_config_directory }}/contrail-plugin.pth",
+            "dest": "/usr/lib/python3.9/site-packages/contrail-plugin.pth",
+            "owner": "root",
+            "perm": "0644"
+        },
+        {
+            "source": "{{ container_config_directory }}/contrail-plugin.pth",
             "dest": "/usr/lib/python{{ distro_python_version }}/site-packages/contrail-plugin.pth",
             "owner": "root",
             "perm": "0644"
