@@ -37,5 +37,7 @@
 
 - import_tasks: bootstrap_service.yml
 
-- include: init_opencontrail.yml
+- name: Init OpenSDN plugin
+  include_tasks:
+    file: init_opensdn.yml
   when: inventory_hostname in groups['neutron-server']

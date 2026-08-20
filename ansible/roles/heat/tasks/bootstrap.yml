@@ -37,7 +37,9 @@
 
 - import_tasks: bootstrap_service.yml
 
-- include: init_opencontrail_heat.yml
+- name: Init OpenSDN plugin
+  include_tasks:
+    file: init_opensdn_heat.yml
   when:
     - inventory_hostname in groups['heat-engine']
     - enable_heat_opencontrail | bool

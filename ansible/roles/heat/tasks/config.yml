@@ -85,5 +85,7 @@
   become: true
   when: service | service_enabled_and_mapped_to_host
 
-- include: config_opencontrail.yml
+- name: Configure OpenSDN plugin
+  include_tasks:
+    file: config_opensdn.yml
 

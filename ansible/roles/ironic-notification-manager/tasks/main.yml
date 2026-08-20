@@ -1,2 +1,4 @@
 ---
-- include: "{{ action }}.yml"
+- include_tasks:
+    file: "{{ action }}.yml"
+

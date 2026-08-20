@@ -1,5 +1,6 @@
 ---
-- include: config.yml
+- include_tasks:
+    file: config.yml
 
 - name: Flush Handlers
   meta: flush_handlers

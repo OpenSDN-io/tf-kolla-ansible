@@ -1,5 +1,6 @@
 ---
-- include: config.yml
+- include_tasks:
+    file: config.yml
   when: inventory_hostname in groups['ironic-api']
 
 - name: Flush Handlers
