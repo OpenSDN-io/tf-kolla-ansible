@@ -9,7 +9,7 @@
         },
         {
             "source": "{{ container_config_directory }}/contrail-plugin.pth",
-            "dest": "/usr/lib/python{{ distro_python_version }}/site-packages/contrail-plugin.pth",
+            "dest": "/var/lib/kolla/venv/lib/python{{ distro_python_version }}/site-packages/contrail-plugin.pth",
             "owner": "root",
             "perm": "0644"
         }{% if heat_policy_file is defined %},
